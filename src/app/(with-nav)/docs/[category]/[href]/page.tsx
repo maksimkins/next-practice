@@ -1,4 +1,5 @@
 import { navbarItems } from "@/data/navbar";
+import { ProductsWithSubcategory } from "@/data/ProductsWithSubcategory";
 
 interface PageProps {
   params: {
@@ -33,6 +34,9 @@ export default async function ProductPage({ params }: PageProps) {
       <p>page url: {href}</p>
       you are view product: Product title &quot;{product.title || "..."}&quot;
       on url: &quot;{product.href}&quot;
+
+
+
     </div>
   );
 }
