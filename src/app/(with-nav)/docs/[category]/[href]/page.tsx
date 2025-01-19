@@ -1,25 +1,26 @@
-import { navbarItems } from "@/data/navbar";
-import { ProductsWithSubcategory } from "@/data/ProductsWithSubcategory";
+import { NavBarProps } from "@/components/helpers/interfaces/navbar";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     href: string;
     category: string;
-  };
+  }>;
 }
 
 export default async function ProductPage({ params }: PageProps) {
-
-
   const { category, href } = await params;
 
-  const itemsArr = navbarItems.flatMap((a) => {
-    return a.items;
-  });
+  const response = await fetch(`${process.env.API_HOST}/nav-bar`);
 
-  const product = itemsArr.find(
-    (item) => item.href === `/docs/${category}/${href}`
-  );
+  if (!response.ok) {
+    throw new Error("Failed to load navbar data");
+  }
+
+  const navbar: NavBarProps[] = await response.json();
+
+  const product = navbar
+    .flatMap((product) => product.items)
+    .find((item) => item.href === `/docs/${category}/${href}`);
 
   if (!product)
     return (
@@ -34,9 +35,6 @@ export default async function ProductPage({ params }: PageProps) {
       <p>page url: {href}</p>
       you are view product: Product title &quot;{product.title || "..."}&quot;
       on url: &quot;{product.href}&quot;
-
-
-
     </div>
   );
 }
