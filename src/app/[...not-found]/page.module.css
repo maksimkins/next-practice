@@ -1,0 +1,9 @@
+.container {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 50px 0px;
+    text-align:center
+}
+.imageContainer {
+    margin: 30px auto;
+}
