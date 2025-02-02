@@ -14,34 +14,36 @@ import { useProductStore } from "../../../store/add-products";
 
 export function Sidebar() {
   const { products } = useProductStore();
-
   const cartItems = products.filter((product) => (product.quantity || 0) > 0);
+  const cartCount = cartItems.reduce((total, item) => total + (item.quantity || 0), 0);
 
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline">
-          <ShoppingCart className="w-2" />
+        <Button variant="outline" className="relative">
+          <ShoppingCart className="w-5 h-5" />
+          {cartCount > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
+              {cartCount}
+            </span>
+          )}
         </Button>
       </SheetTrigger>
       <SheetContent className="md:min-w-[500px]">
         <SheetHeader className="border-b py-3">
-          <SheetTitle>Card</SheetTitle>
+          <SheetTitle>Cart ({cartCount})</SheetTitle>
         </SheetHeader>
 
-        <div className="flex flex-col h-full ">
-          <div className="flex flex-col min-h-screen items-center justify-center gap-4">
-            {cartItems.map((item) => (
-              <CardItem key={item.id} {...item} />
-            ))}
-            {/* <ShoppingCart className="h-16 w-16 text-white/60" />
-            <p className="text-lg font-medium text-white/60">
-              Your cart is empty
-            </p>
-            <Link href="/" className="text-sm text-white/60">
-              Add items to your cart to checkout
-            </Link> */}
-          </div>
+        <div className="flex flex-col h-full">
+          {cartItems.length > 0 ? (
+            <div className="flex flex-col items-center justify-center gap-4 py-4">
+              {cartItems.map((item) => (
+                <CardItem key={item.id} {...item} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-gray-500 mt-10">Your cart is empty.</p>
+          )}
         </div>
       </SheetContent>
     </Sheet>
