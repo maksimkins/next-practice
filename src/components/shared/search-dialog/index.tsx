@@ -14,19 +14,20 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { ItemProps } from "@/components/helpers/interfaces/items";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { IoSearchOutline } from "react-icons/io5";
 import SearchResult from "./search-result";
 import SearchSuggestion from "./search-suggestion";
-import { searchProducts } from "../../../../utils/actions/search-products";
+import { SearchItemProps } from "@/components/helpers/interfaces/search-item";
+import { searchItems } from "@/utils/actions/search-products";
+
 
 export function SearchDialog() {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState("");
-  const [searchResult, setSearchResult] = React.useState<ItemProps[]>([]);
+  const [searchResult, setSearchResult] = React.useState<SearchItemProps[]>([]);
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -43,7 +44,8 @@ export function SearchDialog() {
     const timer = setTimeout(async () => {
       if (searchQuery) {
         try {
-          const result = await searchProducts(searchQuery);
+          const result = await searchItems(searchQuery)
+
           setSearchResult(result);
         } catch (error) {
           console.error("Search failed", error);
@@ -54,8 +56,8 @@ export function SearchDialog() {
     }, 250);
   }, [searchQuery]);
 
-  const handleProductSelect = (product: ItemProps) => {
-    router.push(product.path);
+  const handleResultSelect = (result: SearchItemProps) => {
+    router.push(result.href);
     setOpen(false);
   };
 
@@ -86,7 +88,7 @@ export function SearchDialog() {
             ) : searchResult.length > 0 ? (
               <SearchResult
                 result={searchResult}
-                onSelect={handleProductSelect}
+                onSelect={handleResultSelect}
               />
             ) : (
               <CommandEmpty>No results found.</CommandEmpty>

@@ -1,49 +1,30 @@
-import { NavBarProps } from "@/components/helpers/interfaces/navbar";
-
-import classes from "./product-page.module.css";
+import { ItemProps } from "@/components/helpers/interfaces/items";
+import { ProductCard } from "@/components/shared/product-card";
+import Link from "next/link";
 
 interface PageProps {
-  params: Promise<{
-    href: string;
+  params: {
     category: string;
-  }>;
+    href: string;
+  };
 }
 
 export default async function ProductPage({ params }: PageProps) {
-  const { category, href } = await params;
+  const { category, href } = params;
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/docs/${category}/${href}`);
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/nav-bar`);
+  console.log(`${process.env.NEXT_PUBLIC_API_HOST}/${category}/${href}`)
 
-  if (!response.ok) {
-    throw new Error("Failed to load navbar data");
-  }
-
-  const navbar: NavBarProps[] = await response.json();
-
-  const product = navbar
-    .flatMap((product) => product.items)
-    .find((item) => item.href === `/docs/${category}/${href}`);
-
-  if (!product)
-    return (
-      <div className="container">
-        <h1>Category not found</h1>
-      </div>
-    );
+  const items = await response.json();
 
   return (
-    <div className="container">
-      <div className={classes.product}>
-        <h1 className={classes["product-header"]}>
-          This is page from Category: {category}
-        </h1>
-        <p className={classes["product-info"]}>
-          page url: {href}
-          <span>
-            you are view product: Product title &quot;{product.title || "..."}
-            &quot; on url: &quot;{product.href}&quot;
-          </span>
-        </p>
+    <div className="container p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+          {items.map((product: ItemProps) => (
+            <Link key={product.id} href={product.href}>
+              <ProductCard product={product} />
+            </Link>
+          ))}
       </div>
     </div>
   );

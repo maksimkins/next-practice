@@ -8,6 +8,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import { useProductStore } from "@/store";
 import { Eye } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -18,9 +19,23 @@ type ProductCardProps = {
 
 export function ProductCard({ product }: ProductCardProps) {
   const pathname = usePathname();
-  const isDocs = pathname.startsWith("/docs");
+  const isCategoriesPage = /^\/docs\/[^/]+$/.test(pathname);
 
-  // your code here ...
+  const { setProducts } = useProductStore();
+
+  const addProducts = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    product: ItemProps
+  ) => {
+    event.preventDefault();
+    setProducts((prev) => {
+      const current = prev.find((p) => p.id === product.id);
+      if (!current) {
+        return [...prev, product];
+      }
+      return prev;
+    });
+  };
 
   return (
     <Card className="rounded-lg border bg-zinc-900">
@@ -40,7 +55,7 @@ export function ProductCard({ product }: ProductCardProps) {
       </CardHeader>
       <CardContent className="p-4">
         <h3 className="font-medium text-lg">
-          {!isDocs && "name" in product
+          {!isCategoriesPage && "name" in product
             ? `${product.name.charAt(0).toUpperCase()}${product.name
                 .slice(1)
                 .toLowerCase()}`
@@ -48,18 +63,21 @@ export function ProductCard({ product }: ProductCardProps) {
             ? product.title
             : ""}
         </h3>
-        {!isDocs && "price" in product && (
+        {!isCategoriesPage && "price" in product && (
           <p className="text-sm text-zinc-400">${product.price}</p>
         )}
-        {isDocs && "description" in product && (
+        {isCategoriesPage && "description" in product && (
           <p className="text-sm text-zinc-400">{product.description}</p>
         )}
       </CardContent>
       <CardFooter className="flex gap-2">
-        <Button className="flex-1 hover:bg-zinc-900 hover:text-white hover:border hover:border-white transition-all duration-200">
-          {isDocs ? "View products" : "Add to card"}
+        <Button
+          className="flex-1 hover:bg-zinc-900 hover:text-white hover:border hover:border-white transition-all duration-200"
+          onClick={(event) => addProducts(event, product as ItemProps)}
+        >
+          {isCategoriesPage ? "View products" : "Add to card"}
         </Button>
-        {!isDocs && (
+        {!isCategoriesPage && (
           <Button size={"icon"} variant={"outline"}>
             <Eye />
           </Button>

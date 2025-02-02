@@ -1,12 +1,9 @@
-
-import { ItemProps } from "@/components/helpers/interfaces/items";
-
-import QuantitySelector from "@/components/shared/quantity-selector";
-import { Button } from "@/components/ui/button";
-
-import { Heart, Star } from "lucide-react";
-
 import Image from "next/image";
+import { Star } from "lucide-react";
+
+import { Separator } from "@/components/ui/separator"
+import { ItemProps } from "@/components/helpers/interfaces/items";
+import CardAction from "@/components/shared/card-action";
 
 interface ProdProps {
   params: Promise<{
@@ -18,20 +15,15 @@ export default async function ProductCategory({ params }: ProdProps) {
   const { path } = await params;
 
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/items`);
-  
-  if (!response.ok) {
-    throw new Error("Failed to load items data");
-  }
-
-  const items: ItemProps[] = await response.json();
+  const items = await response.json();
 
   const product = items
-    .flatMap((item) => item)
-    .find((item) => item.path === `/products/${path}`);
+    .flatMap((item : ItemProps) => item)
+    .find((item : ItemProps) => item.href === `/products/${path}`);
 
   return (
     <div className="min-h-screen container p-5">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-12">
         <div className="aspect-square relative overflow-hidden rounded-lg">
           <Image
             src={
@@ -44,10 +36,10 @@ export default async function ProductCategory({ params }: ProdProps) {
           />
         </div>
 
-        <div className="space-y-6">
-          <div className="flex flex-col gap-4">
+        <div className="flex w-full flex-col gap-4">
+         <div className="space-y-2 mb-3">
             <div>
-              <h1 className="text-2xl font-bold mb-2">
+              <h1 className="line-clamp-1 text-2xl font-bold">
                 {product?.name || "Product not found"}
               </h1>
               <p className="text-zinc-400">
@@ -56,52 +48,45 @@ export default async function ProductCategory({ params }: ProdProps) {
             </div>
 
             <div>
-              <p className="font-bold">
+              <p className="text-base text-muted-foreground">
                 ${product?.price || "Price not found"}
               </p>
             </div>
+          </div>
 
-            <div>
-              <p className="text-zinc-400">
+          <Separator />
+
+            <div className="mt-3">
+              <p className="text-base text-muted-foreground">
                 {product?.stockCount || "Stock not found"} in stock
               </p>
             </div>
-
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={`w-5 h-5 ${
-                    i < (product?.rating || 0)
-                      ? "text-yellow-400"
-                      : "text-gray-400"
-                  }`}
-                  fill="currentColor"
-                />
-              ))}
+            
+            <div className="flex items-center justify-between">
+              <div className="flex gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`w-5 h-5 ${
+                      i < (product?.rating || 0)
+                        ? "text-yellow-400"
+                        : "text-gray-400"
+                    }`}
+                    fill="currentColor"
+                  />
+                ))}
+              </div>
             </div>
 
-            <QuantitySelector />
+            {product ? <CardAction product={product} /> : <p>Product not found</p>}  
+            <Separator />
 
-            <div className="flex gap-4">
-              <Button className="flex-1 bg-white hover:bg-zinc-200">
-                Buy now{" "}
-              </Button>
-              <Button variant={"outline"} className="flex-1 border-zinc-800">
-                Add to card
-              </Button>
-              <Button variant={"outline"} className="flex-1 border-zinc-800">
-                <Heart className="w-4 h-4" />
-              </Button>
-            </div>
-
-            <div className="mt-8 flex flex-col gap-4">
+            <div className="mt-3 flex flex-col gap-4">
               <h2 className="text-xl font-bold">Description</h2>
               <p className="text-zinc-400">
                 {product?.description || "Description not found"}
               </p>
             </div>
-          </div>
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,13 +17,9 @@ import { ProductCard } from "@/components/shared/product-card";
 import { ItemProps } from "@/components/helpers/interfaces/items";
 import { NavBarProps } from "@/components/helpers/interfaces/navbar";
 
-// import { navbar } from "@/data/navbar";
-
 export default async function Main() {
-  // Your api call ....
-  // return json() and integrate to page
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/nav-bar`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/navbar`);
   const navbar: NavBarProps[] = await res.json();
 
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/items`);
@@ -31,17 +28,7 @@ export default async function Main() {
   return (
     <main className="container">
       <section className="container py-24 text-center animate-fadeUp">
-        <div className="mb-8 flex justify-center">
-          <Link href="https://github.com/sadmann7/skateshop" target="_black">
-            <Button
-              variant="outline"
-              className="bg-zinc-800 font-[900] rounded-full hover:bg-zinc-900 text-xs "
-            >
-              <Github className=" h-4 w-4" />
-              5327 stars on GitHub
-            </Button>
-          </Link>
-        </div>
+        
 
         <h1 className="mb-6 text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl ">
           Foundation for your commerce platform
@@ -108,7 +95,7 @@ export default async function Main() {
         </div>
         <div className="grid gap-6 mt-8 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((product: ItemProps) => (
-            <Link key={product.id} href={product.path}>
+            <Link key={product.id} href={product.href}>
               <ProductCard product={product} />
             </Link>
           ))}

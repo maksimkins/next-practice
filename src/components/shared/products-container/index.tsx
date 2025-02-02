@@ -1,16 +1,13 @@
 "use client";
 
-import { NavBarProps } from "@/components/helpers/interfaces/navbar"
+import { NavBarProps } from "@/components/helpers/interfaces/navbar";
+
+import { fetcher } from "@/utils/fetcher";
 import useSWR from "swr";
-import { fetcher } from "../../../../utils/fetcher";
 
 export default function ProductsContainer() {
-  //   const navbar: NavBarProps = await fetcher<NavBarProps>(
-  //     `${process.env.NEXT_PUBLIC_API_HOST}/nav-bar`
-  //   );
-
   const { data, error, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_HOST}/nav-bar`,
+    `${process.env.NEXT_PUBLIC_API_HOST}/navbar`,
     fetcher
   );
   const navItems = data as NavBarProps;

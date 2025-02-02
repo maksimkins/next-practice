@@ -10,7 +10,7 @@ import {
 
 import { ShoppingCart } from "lucide-react";
 import CardItem from "./card-item";
-import { useProductStore } from "../../../../store/add-products";
+import { useProductStore } from "../../../store/add-products";
 
 export function Sidebar() {
   const { products } = useProductStore();
