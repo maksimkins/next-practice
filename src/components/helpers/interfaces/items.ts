@@ -10,3 +10,11 @@ export interface ItemProps {
     rating: number;
     quantity: number;
 }
+
+export interface SubProduct {
+    id: string;
+    name: string;
+    price: number;
+    imageUrl: string;
+    stockCount: number;
+}

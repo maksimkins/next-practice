@@ -1,5 +1,4 @@
 "use client";
-// import * as React from "react"
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,77 +11,142 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { FaGoogle } from "react-icons/fa";
-import { FaDiscord } from "react-icons/fa";
+import { FaGithub, FaGoogle } from "react-icons/fa";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { FormProvider, useForm } from "react-hook-form";
+import { formLoginSchema, TFormLoginValues } from "../schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 
 export default function SignIn() {
+  const router = useRouter();
+
+  const form = useForm<TFormLoginValues>({
+    resolver: zodResolver(formLoginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = async (data: TFormLoginValues) => {
+    try {
+      const resp = await signIn("credentials", {
+        ...data,
+        redirect: false,
+      });
+
+      if (resp?.ok) {
+        router.push("/");
+      } else {
+        form.setError("root", { message: "Invalid credentials" });
+      }
+    } catch (err) {
+      console.error(err);
+
+      form.setError("root", { message: "Something went wrong" });
+    }
+  };
+
   return (
     <div className="flex h-screen">
       <div className="w-1/2 flex items-center justify-center">
-        <Card className="w-[450px]">
-          <CardHeader>
-            <div>
-              <CardTitle className="mb-1 text-2xl font-semibold">Sign in</CardTitle>
-              <CardDescription>
-                Choose your preferred sign in method
-              </CardDescription>
-            </div>
-          </CardHeader>
-          <CardContent className="p-6 pt-0 grid gap-4">
-            <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
-                    <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full bg-background">
-                      <FaGoogle className="mr-2 size-4" />
-                      Google
-                    </button>
-
-                  <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full bg-background">
-                      <FaDiscord className="mr-2 size-4" />
-                      Discord
-                  </button>
-            </div>
-
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t"></span>
-              </div>
-
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
-              </div>
-            </div>
-
-            <form>
-              <div className="grid w-full items-center gap-4">
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="name">Email</Label>
-                  <Input id="name" placeholder="example@gmail.com" />
+        <FormProvider {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <Card className="w-[450px]">
+              <CardHeader>
+                <CardTitle className="text-2xl font-semibold">
+                  Sign In
+                </CardTitle>
+                <CardDescription>
+                  Choose your preferred sign in method
+                  <div className="flex flex-col items-center space-y-4 mt-5">
+                    <div className="flex w-full space-x-4">
+                      <Button 
+                        onClick={() => signIn("google", { callbackUrl: "/" })}
+                        className="flex items-center justify-center w-1/2 border bg-transparent text-white font-semibold hover:text-black"
+                      >
+                        <FaGoogle /> Google
+                      </Button>
+                      <Button
+                        onClick={() => signIn("github", { callbackUrl: "/" })}
+                        className="flex items-center justify-center w-1/2 border bg-transparent text-white font-semibold hover:text-black"
+                      >
+                        <FaGithub /> GitHub
+                      </Button>
+                    </div>
+                    <div className="flex items-center w-full">
+                      <hr className="flex-1 border-gray-600" />
+                      <span className="mx-4 text-xs text-gray-400">
+                        OR CONTINUE WITH
+                      </span>
+                      <hr className="flex-1 border-gray-600" />
+                    </div>
+                  </div>
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid w-full items-center gap-4">
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      {...form.register("email")}
+                      placeholder="example@gmail.com"
+                    />
+                    {form.formState.errors.email && (
+                      <span className="text-red-500 text-sm">
+                        {form.formState.errors.email.message}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="password">Password</Label>
+                    <Input
+                      {...form.register("password")}
+                      type="password"
+                      placeholder="**********"
+                    />
+                    {form.formState.errors.password && (
+                      <span className="text-red-500 text-sm">
+                        {form.formState.errors.password.message}
+                      </span>
+                    )}
+                  </div>
+                  {form.formState.errors.root && (
+                    <span className="text-red-500 text-sm">
+                      {form.formState.errors.root.message}
+                    </span>
+                  )}
                 </div>
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="framework">Password</Label>
-                  <Input id="name" type="password" placeholder="********" />
+              </CardContent>
+              <CardFooter className="flex flex-col">
+                <Button
+                  className="w-full mb-5"
+                  type="submit"
+                  disabled={form.formState.isSubmitting}
+                >
+                  {form.formState.isSubmitting ? "Signing in..." : "Sign In"}
+                </Button>
+                <div className="w-full flex justify-between text-sm">
+                  <div className="flex space-x-2">
+                    <span>Don&apos;t have an account? </span>
+                    <Link className="font-semibold" href="/auth/signup">
+                      Sign up
+                    </Link>
+                  </div>
+                  <Link
+                    href="/auth/reset-password"
+                    className="text-sm font-semibold"
+                  >
+                    Reset Password
+                  </Link>
                 </div>
-              </div>
-            </form>
-          </CardContent>
-          <CardFooter className="flex justify-between">
-            <Button className="w-full">Sign in</Button>
-          </CardFooter>
-
-          <div className="p-6 pt-0 flex flex-wrap items-center justify-between gap-2">
-            <div className="text-sm text-muted-foreground">
-              <span className="mr-1 hidden sm:inline-block">Don't have an account?</span>
-
-              <a aria-label="Sign up" className="text-primary underline-offset-4 transition-colors hover:underline" href="signup">
-                Sign up
-              </a>
-
-            </div>
-            
-            <a aria-label="Reset password" className="text-sm text-primary underline-offset-4 transition-colors hover:underline" href="reset-password">
-              Reset password
-            </a>
-          </div>
-        </Card>
+              </CardFooter>
+            </Card>
+          </form>
+        </FormProvider>
       </div>
       <div className="w-1/2 relative">
         <div
@@ -90,14 +154,16 @@ export default function SignIn() {
           style={{
             backgroundImage: `url('https://skateshop.sadmn.com/images/auth-layout.webp')`,
           }}
-        ></div>
+        />
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `linear-gradient(to top, rbga(0,0,0,1.2),  rbga(0,0,0,0.8),  rbga(0,0,0,0.4))`,
+            backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0))`,
           }}
-        ></div>
+        />
       </div>
     </div>
   );
 }
+
+

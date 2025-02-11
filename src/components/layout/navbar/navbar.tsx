@@ -18,9 +18,15 @@ import { Sidebar } from "@/components/shared/sidebar";
 
 import { NavBarProps } from "@/components/helpers/interfaces/navbar";
 import NavItem from "@/components/shared/nav-item";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export async function NavBar() {
+  const session = await getServerSession(authOptions);
+  console.log(session)
+
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/navbar`);
+
   if (!response.ok) {
     throw new Error("Failed to load navbar data");
   }
@@ -81,9 +87,15 @@ export async function NavBar() {
         <div className="flex items-center gap-4">
           <SearchDialog />
           <Sidebar />
-          <Button>
-            <Link href="/auth/signin">Sign in </Link>
-          </Button>
+          {session ? (
+            <form action="/api/auth/signout" method="POST">
+              <Button type="submit">Sign Out</Button>
+            </form>
+          ) : (
+            <Button>
+              <Link href="/auth/signin">Sign in</Link>
+            </Button>
+          )}
         </div>
       </div>
     </div>
