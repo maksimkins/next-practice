@@ -55,7 +55,7 @@ export default async function Main() {
       <section className="container mx-auto px-4 pb-24 max-w-6xl animate-fadeUp duration-700">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {navbar.map((product) => (
-            <Link key={product.name} href={product.items[0].href}>
+            <Link key={product.name} href={`${product.items[0].href}`}>
               <Card className="border-zinc-800 max-h-[186px] h-full transition-all duration-200 hover:bg-zinc-900">
                 <CardHeader className="h-full flex flex-col justify-between">
                   <div className="flex flex-col py-3 gap-2">
@@ -86,7 +86,7 @@ export default async function Main() {
             </p>
           </div>
           <div className="flex">
-            <Link href="/" className="text-zinc-800">
+            <Link href={"/"} className="text-zinc-800">
               <Button variant="outline" className="text-white font-medium">
                 <span>View all products</span> <GoArrowRight />
               </Button>
@@ -95,7 +95,7 @@ export default async function Main() {
         </div>
         <div className="grid gap-6 mt-8 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((product: ItemProps) => (
-            <Link key={product.id} href={product.href}>
+            <Link key={product.id} href={`${product.href}`}>
               <ProductCard product={product} />
             </Link>
           ))}

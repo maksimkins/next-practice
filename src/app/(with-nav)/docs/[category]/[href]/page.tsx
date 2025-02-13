@@ -21,7 +21,7 @@ export default async function ProductPage({ params }: PageProps) {
     <div className="container p-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
           {items.map((product: ItemProps) => (
-            <Link key={product.id} href={product.href}>
+            <Link key={product.id} href={`${product.href}`}>
               <ProductCard product={product} />
             </Link>
           ))}

@@ -132,7 +132,7 @@ export default function SignIn() {
                 <div className="w-full flex justify-between text-sm">
                   <div className="flex space-x-2">
                     <span>Don&apos;t have an account? </span>
-                    <Link className="font-semibold" href="/auth/signup">
+                    <Link className="font-semibold" href={"/auth/signup"}>
                       Sign up
                     </Link>
                   </div>

@@ -16,7 +16,7 @@ export default function NotFound() {
           className={classes.imageContainer}/>
 
         <Button>
-          <Link href="/">Go back to Home</Link>
+          <Link href={"/"}>Go back to Home</Link>
         </Button>
         
       </div>

@@ -9,7 +9,7 @@ export default function ProfileButton() {
     <>
       {!session ? (
         <Button>
-          <Link href="/auth/signin">Sign in </Link>
+          <Link href={"/auth/signin"}>Sign in </Link>
         </Button>
       ) : (
         <div className="flex items-center gap-2">

@@ -36,7 +36,7 @@ export async function NavBar() {
     <div className="border-b py-4">
       <div className="container flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link href="/" className="text-lg font-bold">
+          <Link href={"/"} className="text-lg font-bold">
             Skateshop
           </Link>
           <NavigationMenu>
@@ -93,7 +93,7 @@ export async function NavBar() {
             </form>
           ) : (
             <Button>
-              <Link href="/auth/signin">Sign in</Link>
+              <Link href={"/auth/signin"}>Sign in</Link>
             </Button>
           )}
         </div>
