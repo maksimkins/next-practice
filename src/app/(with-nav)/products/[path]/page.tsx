@@ -2,24 +2,20 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator"
-import { ItemProps } from "@/components/helpers/interfaces/items";
 import CardAction from "@/components/shared/card-action";
+
+
 
 interface ProdProps {
   params: Promise<{
-    path: string;
+    id: number;
   }>;
 }
 
 export default async function ProductCategory({ params }: ProdProps) {
-  const { path } = await params;
-
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/items`);
-  const items = await response.json();
-
-  const product = items
-    .flatMap((item : ItemProps) => item)
-    .find((item : ItemProps) => item.href === `/products/${path}`);
+  const { id } = await params;
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/products/${id}`);
+  const product = await response.json();
 
   return (
     <div className="min-h-screen container p-5">

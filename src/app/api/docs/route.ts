@@ -1,22 +1,40 @@
-import { CategoryProps } from "@/components/helpers/interfaces/category";
-import { navbar } from "@/data/navbar";
 import { NextResponse } from "next/server";
+import { prisma } from "../../../../prisma/prisma-client";
+import { CategoryProps, SubCategoryProps } from "@/components/helpers/interfaces/category";
 
 export async function GET(req: Request) {
-    const categoriesWithSubcategories: CategoryProps[] = navbar.flatMap(category => 
-        category.items.map(item => ({
-            id: crypto.randomUUID(),
-            title: `${category.name}: ${item.title}`,
-            href: item.title.toLowerCase() === "all" 
-                ? `/docs/${category.name.toLowerCase()}` 
-                : `/docs/${category.name.toLowerCase()}/${item.title.toLowerCase()}`,
-            description: ""
-        }))
-    );
+    try {
+        const categories = await prisma.category.findMany({
+            include: {
+                subcategories: {
+                    include: {
+                        products: false,
+                    },
+                },
+            },
+        });
 
-    if (!categoriesWithSubcategories.length) {
-        return NextResponse.json({ error: "Subcategories not found" }, { status: 404 });
+        const categoriesWithSubcategories: CategoryProps[] = categories.map(category => ({
+            id: category.id,
+            name: category.name,
+            description: category.description,
+            href: category.href,
+            subCategories: category.subcategories.map(subcategory => ({
+                id: subcategory.id,
+                name: subcategory.name,
+                description: subcategory.description,
+                href: subcategory.href,
+                categoryId: subcategory.categoryId,
+            })),
+        }));
+
+        if (!categoriesWithSubcategories.length) {
+            return NextResponse.json({ error: "Categories not found" }, { status: 404 });
+        }
+
+        return NextResponse.json(categoriesWithSubcategories);
+    } catch (error) {
+        return NextResponse.json({ error: error }, { status: 500 });
     }
 
-    return NextResponse.json(categoriesWithSubcategories);
 }

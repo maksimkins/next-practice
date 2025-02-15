@@ -19,7 +19,9 @@ interface NavItemProps {
 
 export default function NavItem({ item }: NavItemProps) {
   const path = usePathname();
-  const isActive = path.startsWith(`/docs/${item.category.toLowerCase()}`);
+  // const isActive = path.startsWith(`/docs/${item.category?.toLowerCase()}`);
+
+  const isActive = false;
 
   return (
     <NavigationMenuItem>
@@ -30,13 +32,13 @@ export default function NavItem({ item }: NavItemProps) {
       </NavigationMenuTrigger>
       <NavigationMenuContent>
         <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-          {item.items.map((component) => (
+          {item.subcategories.map((subcategory) => (
             <ListItem
-              key={component.title}
-              title={component.title}
-              href={component.href}
+              key={subcategory.id}
+              title={subcategory.name}
+              href={subcategory.href}
             >
-              {component.description}
+              {subcategory.description}
             </ListItem>
           ))}
         </ul>

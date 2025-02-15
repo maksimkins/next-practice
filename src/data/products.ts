@@ -1,37 +1,33 @@
 export const products = [
-    // SKATEBOARDS CATEGORY
+    // SKATEBOARDS categoryId
     // Decks
     {
-        id: "deck-1",
-        category: "skateboards",
-        subcategory: "decks",
+        categoryId: 1,
+        subCategoryId: 6,
         name: "Pro Series Street Deck",
         price: 59.99,
         description: "Professional grade maple deck for street skating",
         image: "https://motobros.com/wp-content/uploads/2024/09/no-image.jpeg"
     },
     {
-        id: "deck-2",
-        category: "skateboards",
-        subcategory: "decks",
+        categoryId: 1,
+        subCategoryId: 6,
         name: "Beginner Friendly Deck",
         price: 44.99,
         description: "Perfect for learning the basics",
         image: "https://motobros.com/wp-content/uploads/2024/09/no-image.jpeg"
     },
     {
-        id: "deck-3",
-        category: "skateboards",
-        subcategory: "decks",
+        categoryId: 1,
+        subCategoryId: 6,
         name: "Park Performance Deck",
         price: 64.99,
         description: "Optimized for park and transition skating",
         image: "https://motobros.com/wp-content/uploads/2024/09/no-image.jpeg"
     },
     {
-        id: "deck-4",
-        category: "skateboards",
-        subcategory: "decks",
+        categoryId: 1,
+        subCategoryId: 6,
         name: "Limited Edition Art Deck",
         price: 79.99,
         description: "Featuring exclusive artwork",
@@ -40,27 +36,24 @@ export const products = [
 
     // Wheels
     {
-        id: "wheel-1",
-        category: "skateboards",
-        subcategory: "wheels",
+        categoryId: 1,
+        subCategoryId: 7,
         name: "Street Tech Wheels 52mm",
         price: 29.99,
         description: "Perfect for technical street skating",
         image: "https://motobros.com/wp-content/uploads/2024/09/no-image.jpeg"
     },
     {
-        id: "wheel-2",
-        category: "skateboards",
-        subcategory: "wheels",
+        categoryId: 1,
+        subCategoryId: 7,
         name: "Park Master Wheels 56mm",
         price: 34.99,
         description: "Ideal for park and bowl skating",
         image: "https://motobros.com/wp-content/uploads/2024/09/no-image.jpeg"
     },
     {
-        id: "wheel-3",
-        category: "skateboards",
-        subcategory: "wheels",
+        categoryId: 1,
+        subCategoryId: 7,
         name: "Cruiser Wheels 60mm",
         price: 39.99,
         description: "Smooth riding for cruising streets",
@@ -68,8 +61,8 @@ export const products = [
     },
     {
         id: "wheel-4",
-        category: "skateboards",
-        subcategory: "wheels",
+        categoryId: 1,
+        subCategoryId: 7,
         name: "Pro Series Wheels 54mm",
         price: 44.99,
         description: "Professional grade all-around wheels",
@@ -79,8 +72,8 @@ export const products = [
     // Trucks
     {
         id: "truck-1",
-        category: "skateboards",
-        subcategory: "trucks",
+        categoryId: 1,
+        subCategoryId: 8,
         name: "Pro Light Trucks",
         price: 49.99,
         description: "Lightweight trucks for technical skating",
@@ -88,8 +81,8 @@ export const products = [
     },
     {
         id: "truck-2",
-        category: "skateboards",
-        subcategory: "trucks",
+        categoryId: 1,
+        subCategoryId: 8,
         name: "Heavy Duty Trucks",
         price: 54.99,
         description: "Durable trucks for aggressive skating",
@@ -97,8 +90,8 @@ export const products = [
     },
     {
         id: "truck-3",
-        category: "skateboards",
-        subcategory: "trucks",
+        categoryId: 1,
+        subCategoryId: 8,
         name: "Standard Core Trucks",
         price: 44.99,
         description: "Reliable trucks for all-around use",
@@ -106,8 +99,8 @@ export const products = [
     },
     {
         id: "truck-4",
-        category: "skateboards",
-        subcategory: "trucks",
+        categoryId: 1,
+        subCategoryId: 8,
         name: "Premium Pro Trucks",
         price: 59.99,
         description: "Professional grade trucks with precision",
@@ -117,8 +110,8 @@ export const products = [
     // Bearings
     {
         id: "bearing-1",
-        category: "skateboards",
-        subcategory: "bearings",
+        categoryId: 1,
+        subCategoryId: 9,
         name: "Speed Master Bearings",
         price: 24.99,
         description: "High-speed bearings for maximum performance",
@@ -126,8 +119,8 @@ export const products = [
     },
     {
         id: "bearing-2",
-        category: "skateboards",
-        subcategory: "bearings",
+        categoryId: 1,
+        subCategoryId: 9,
         name: "Ceramic Pro Bearings",
         price: 39.99,
         description: "Premium ceramic bearings for smooth rides",
@@ -135,8 +128,8 @@ export const products = [
     },
     {
         id: "bearing-3",
-        category: "skateboards",
-        subcategory: "bearings",
+        categoryId: 1,
+        subCategoryId: 9,
         name: "Standard ABEC-7 Bearings",
         price: 19.99,
         description: "Reliable bearings for everyday skating",
@@ -144,8 +137,8 @@ export const products = [
     },
     {
         id: "bearing-4",
-        category: "skateboards",
-        subcategory: "bearings",
+        categoryId: 1,
+        subCategoryId: 9,
         name: "Swiss Precision Bearings",
         price: 34.99,
         description: "Swiss-made precision bearings",
@@ -155,8 +148,8 @@ export const products = [
     // Griptape
     {
         id: "grip-1",
-        category: "skateboards",
-        subcategory: "griptape",
+        categoryId: 1,
+        subCategoryId: 10,
         name: "Standard Black Grip",
         price: 9.99,
         description: "Classic black grip tape for reliable traction",
@@ -164,8 +157,8 @@ export const products = [
     },
     {
         id: "grip-2",
-        category: "skateboards",
-        subcategory: "griptape",
+        categoryId: 1,
+        subCategoryId: 10,
         name: "Pro Series Grip",
         price: 14.99,
         description: "Professional grade grip tape with extra durability",
@@ -173,8 +166,8 @@ export const products = [
     },
     {
         id: "grip-3",
-        category: "skateboards",
-        subcategory: "griptape",
+        categoryId: 1,
+        subCategoryId: 10,
         name: "Art Pattern Grip",
         price: 12.99,
         description: "Decorative grip tape with unique patterns",
@@ -182,8 +175,8 @@ export const products = [
     },
     {
         id: "grip-4",
-        category: "skateboards",
-        subcategory: "griptape",
+        categoryId: 1,
+        subCategoryId: 10,
         name: "Clear Grip Tape",
         price: 11.99,
         description: "Clear grip tape to show deck graphics",
@@ -193,8 +186,8 @@ export const products = [
     // Hardware
     {
         id: "hardware-1",
-        category: "skateboards",
-        subcategory: "hardware",
+        categoryId: 1,
+        subCategoryId: 11,
         name: "Standard Hardware Set",
         price: 7.99,
         description: "Basic hardware set for deck assembly",
@@ -202,8 +195,8 @@ export const products = [
     },
     {
         id: "hardware-2",
-        category: "skateboards",
-        subcategory: "hardware",
+        categoryId: 1,
+        subCategoryId: 11,
         name: "Pro Hardware Kit",
         price: 12.99,
         description: "Premium hardware with Allen head bolts",
@@ -211,8 +204,8 @@ export const products = [
     },
     {
         id: "hardware-3",
-        category: "skateboards",
-        subcategory: "hardware",
+        categoryId: 1,
+        subCategoryId: 11,
         name: "Colored Hardware Pack",
         price: 9.99,
         description: "Colorful hardware for style customization",
@@ -220,8 +213,8 @@ export const products = [
     },
     {
         id: "hardware-4",
-        category: "skateboards",
-        subcategory: "hardware",
+        categoryId: 1,
+        subCategoryId: 11,
         name: "Riser Pad Kit",
         price: 8.99,
         description: "Complete hardware set with riser pads",
@@ -231,8 +224,8 @@ export const products = [
     // Tools
     {
         id: "tool-1",
-        category: "skateboards",
-        subcategory: "tools",
+        categoryId: 1,
+        subCategoryId: 12,
         name: "Multi-Tool Skate Tool",
         price: 19.99,
         description: "All-in-one skateboard maintenance tool",
@@ -240,8 +233,8 @@ export const products = [
     },
     {
         id: "tool-2",
-        category: "skateboards",
-        subcategory: "tools",
+        categoryId: 1,
+        subCategoryId: 12,
         name: "Pro Socket Tool",
         price: 24.99,
         description: "Professional grade socket tool set",
@@ -249,8 +242,8 @@ export const products = [
     },
     {
         id: "tool-3",
-        category: "skateboards",
-        subcategory: "tools",
+        categoryId: 1,
+        subCategoryId: 12,
         name: "Basic T-Tool",
         price: 14.99,
         description: "Simple T-shaped skateboard tool",
@@ -258,20 +251,20 @@ export const products = [
     },
     {
         id: "tool-4",
-        category: "skateboards",
-        subcategory: "tools",
+        categoryId: 1,
+        subCategoryId: 12,
         name: "Bearing Press Kit",
         price: 29.99,
         description: "Complete bearing installation and removal kit",
         image: "https://motobros.com/wp-content/uploads/2024/09/no-image.jpeg"
     },
 
-    // CLOTHING CATEGORY
+    // CLOTHING categoryId
     // T-shirts
     {
         id: "tshirt-1",
-        category: "clothing",
-        subcategory: "t-shirt",
+        categoryId: 2,
+        subCategoryId: 13,
         name: "Classic Logo Tee",
         price: 24.99,
         description: "Classic fit with iconic logo",
@@ -279,8 +272,8 @@ export const products = [
     },
     {
         id: "tshirt-2",
-        category: "clothing",
-        subcategory: "t-shirt",
+        categoryId: 2,
+        subCategoryId: 13,
         name: "Skate Art Tee",
         price: 29.99,
         description: "Featuring original skate artwork",
@@ -288,8 +281,8 @@ export const products = [
     },
     {
         id: "tshirt-3",
-        category: "clothing",
-        subcategory: "t-shirt",
+        categoryId: 2,
+        subCategoryId: 13,
         name: "Premium Cotton Tee",
         price: 34.99,
         description: "High-quality cotton with modern fit",
@@ -297,8 +290,8 @@ export const products = [
     },
     {
         id: "tshirt-4",
-        category: "clothing",
-        subcategory: "t-shirt",
+        categoryId: 2,
+        subCategoryId: 13,
         name: "Limited Edition Tee",
         price: 39.99,
         description: "Exclusive design with premium print",
@@ -308,8 +301,8 @@ export const products = [
     // Hoodies
     {
         id: "hoodie-1",
-        category: "clothing",
-        subcategory: "hoodies",
+        categoryId: 2,
+        subCategoryId: 14,
         name: "Classic Pullover Hoodie",
         price: 49.99,
         description: "Comfortable cotton blend hoodie",
@@ -317,8 +310,8 @@ export const products = [
     },
     {
         id: "hoodie-2",
-        category: "clothing",
-        subcategory: "hoodies",
+        categoryId: 2,
+        subCategoryId: 14,
         name: "Zip-Up Tech Hoodie",
         price: 59.99,
         description: "Technical fabric with full zip",
@@ -326,8 +319,8 @@ export const products = [
     },
     {
         id: "hoodie-3",
-        category: "clothing",
-        subcategory: "hoodies",
+        categoryId: 2,
+        subCategoryId: 14,
         name: "Premium Graphic Hoodie",
         price: 64.99,
         description: "Designer graphics on premium material",
@@ -335,8 +328,8 @@ export const products = [
     },
     {
         id: "hoodie-4",
-        category: "clothing",
-        subcategory: "hoodies",
+        categoryId: 2,
+        subCategoryId: 14,
         name: "Lightweight Summer Hoodie",
         price: 54.99,
         description: "Perfect for summer skating",
@@ -346,8 +339,8 @@ export const products = [
     // Pants
     {
         id: "pants-1",
-        category: "clothing",
-        subcategory: "pants",
+        categoryId: 2,
+        subCategoryId: 15,
         name: "Classic Skate Pants",
         price: 54.99,
         description: "Durable cotton pants for skating",
@@ -355,8 +348,8 @@ export const products = [
     },
     {
         id: "pants-2",
-        category: "clothing",
-        subcategory: "pants",
+        categoryId: 2,
+        subCategoryId: 15,
         name: "Cargo Skate Pants",
         price: 64.99,
         description: "Multi-pocket design for utility",
@@ -364,8 +357,8 @@ export const products = [
     },
     {
         id: "pants-3",
-        category: "clothing",
-        subcategory: "pants",
+        categoryId: 2,
+        subCategoryId: 15,
         name: "Slim Fit Pants",
         price: 59.99,
         description: "Modern slim fit with stretch",
@@ -373,8 +366,8 @@ export const products = [
     },
     {
         id: "pants-4",
-        category: "clothing",
-        subcategory: "pants",
+        categoryId: 2,
+        subCategoryId: 15,
         name: "Work Pants",
         price: 69.99,
         description: "Heavy-duty work pants style",
@@ -382,8 +375,8 @@ export const products = [
     },
     {
         id: "shorts-1",
-        category: "clothing",
-        subcategory: "shorts",
+        categoryId: 2,
+        subCategoryId: 16,
         name: "Classic Skate Shorts",
         price: 39.99,
         description: "Classic fit cotton skate shorts",
@@ -391,8 +384,8 @@ export const products = [
     },
     {
         id: "shorts-2",
-        category: "clothing",
-        subcategory: "shorts",
+        categoryId: 2,
+        subCategoryId: 16,
         name: "Cargo Skate Shorts",
         price: 44.99,
         description: "Multi-pocket design for versatility",
@@ -400,8 +393,8 @@ export const products = [
     },
     {
         id: "shorts-3",
-        category: "clothing",
-        subcategory: "shorts",
+        categoryId: 2,
+        subCategoryId: 16,
         name: "Tech Fabric Shorts",
         price: 49.99,
         description: "Lightweight, breathable technical fabric",
@@ -409,8 +402,8 @@ export const products = [
     },
     {
         id: "shorts-4",
-        category: "clothing",
-        subcategory: "shorts",
+        categoryId: 2,
+        subCategoryId: 16,
         name: "Stretch Fit Shorts",
         price: 45.99,
         description: "Flexible fabric for maximum mobility",
@@ -420,8 +413,8 @@ export const products = [
     // Hats
     {
         id: "hat-1",
-        category: "clothing",
-        subcategory: "hats",
+        categoryId: 2,
+        subCategoryId: 17,
         name: "Classic Snapback",
         price: 29.99,
         description: "Traditional snapback with embroidered logo",
@@ -429,8 +422,8 @@ export const products = [
     },
     {
         id: "hat-2",
-        category: "clothing",
-        subcategory: "hats",
+        categoryId: 2,
+        subCategoryId: 17,
         name: "Fitted Skate Cap",
         price: 34.99,
         description: "Professional fitted cap with flex fit",
@@ -438,8 +431,8 @@ export const products = [
     },
     {
         id: "hat-3",
-        category: "clothing",
-        subcategory: "hats",
+        categoryId: 2,
+        subCategoryId: 17,
         name: "Bucket Hat",
         price: 27.99,
         description: "Classic bucket hat style with embroidery",
@@ -447,20 +440,20 @@ export const products = [
     },
     {
         id: "hat-4",
-        category: "clothing",
-        subcategory: "hats",
+        categoryId: 2,
+        subCategoryId: 17,
         name: "Beanie",
         price: 24.99,
         description: "Warm knit beanie for cold weather",
         image: "https://motobros.com/wp-content/uploads/2024/09/no-image.jpeg"
     },
 
-    // SHOES CATEGORY
+    // SHOES categoryId
     // Low Tops
     {
         id: "lowtop-1",
-        category: "shoes",
-        subcategory: "low-tops",
+        categoryId: 3,
+        subCategoryId: 18,
         name: "Classic Low",
         price: 59.99,
         description: "Classic low-top skate shoe design",
@@ -468,8 +461,8 @@ export const products = [
     },
     {
         id: "lowtop-2",
-        category: "shoes",
-        subcategory: "low-tops",
+        categoryId: 3,
+        subCategoryId: 18,
         name: "Pro Model Low",
         price: 79.99,
         description: "Professional model with extra durability",
@@ -477,8 +470,8 @@ export const products = [
     },
     {
         id: "lowtop-3",
-        category: "shoes",
-        subcategory: "low-tops",
+        categoryId: 3,
+        subCategoryId: 18,
         name: "Vulc Low",
         price: 64.99,
         description: "Vulcanized sole for better board feel",
@@ -486,8 +479,8 @@ export const products = [
     },
     {
         id: "lowtop-4",
-        category: "shoes",
-        subcategory: "low-tops",
+        categoryId: 3,
+        subCategoryId: 18,
         name: "Street Low",
         price: 69.99,
         description: "Designed for street skating",
@@ -497,8 +490,8 @@ export const products = [
     // High Tops
     {
         id: "hightop-1",
-        category: "shoes",
-        subcategory: "high-tops",
+        categoryId: 3,
+        subCategoryId: 19,
         name: "Classic High",
         price: 69.99,
         description: "Traditional high-top skate shoe",
@@ -506,8 +499,8 @@ export const products = [
     },
     {
         id: "hightop-2",
-        category: "shoes",
-        subcategory: "high-tops",
+        categoryId: 3,
+        subCategoryId: 19,
         name: "Pro High",
         price: 89.99,
         description: "Professional high-top with ankle support",
@@ -515,8 +508,8 @@ export const products = [
     },
     {
         id: "hightop-3",
-        category: "shoes",
-        subcategory: "high-tops",
+        categoryId: 3,
+        subCategoryId: 19,
         name: "Padded High",
         price: 84.99,
         description: "Extra padding for protection",
@@ -524,8 +517,8 @@ export const products = [
     },
     {
         id: "hightop-4",
-        category: "shoes",
-        subcategory: "high-tops",
+        categoryId: 3,
+        subCategoryId: 19,
         name: "Premium High",
         price: 94.99,
         description: "Premium materials and construction",
@@ -535,8 +528,8 @@ export const products = [
     // Slip-ons
     {
         id: "slipon-1",
-        category: "shoes",
-        subcategory: "slip-ons",
+        categoryId: 3,
+        subCategoryId: 20,
         name: "Classic Slip",
         price: 54.99,
         description: "Traditional slip-on skate shoe",
@@ -544,8 +537,8 @@ export const products = [
     },
     {
         id: "slipon-2",
-        category: "shoes",
-        subcategory: "slip-ons",
+        categoryId: 3,
+        subCategoryId: 20,
         name: "Pro Slip",
         price: 64.99,
         description: "Professional model slip-on",
@@ -553,8 +546,8 @@ export const products = [
     },
     {
         id: "slipon-3",
-        category: "shoes",
-        subcategory: "slip-ons",
+        categoryId: 3,
+        subCategoryId: 20,
         name: "Comfort Slip",
         price: 59.99,
         description: "Extra comfort padding and arch support",
@@ -562,8 +555,8 @@ export const products = [
     },
     {
         id: "slipon-4",
-        category: "shoes",
-        subcategory: "slip-ons",
+        categoryId: 3,
+        subCategoryId: 20,
         name: "Canvas Slip",
         price: 49.99,
         description: "Classic canvas construction",
@@ -573,8 +566,8 @@ export const products = [
     // Pros
     {
         id: "pro-1",
-        category: "shoes",
-        subcategory: "pros",
+        categoryId: 3,
+        subCategoryId: 21,
         name: "Elite Pro Model",
         price: 99.99,
         description: "Top-tier professional skate shoe",
@@ -582,8 +575,8 @@ export const products = [
     },
     {
         id: "pro-2",
-        category: "shoes",
-        subcategory: "pros",
+        categoryId: 3,
+        subCategoryId: 21,
         name: "Signature Pro",
         price: 89.99,
         description: "Professional signature model",
@@ -591,8 +584,8 @@ export const products = [
     },
     {
         id: "pro-3",
-        category: "shoes",
-        subcategory: "pros",
+        categoryId: 3,
+        subCategoryId: 21,
         name: "Tech Pro",
         price: 94.99,
         description: "Advanced technology pro model",
@@ -600,8 +593,8 @@ export const products = [
     },
     {
         id: "pro-4",
-        category: "shoes",
-        subcategory: "pros",
+        categoryId: 3,
+        subCategoryId: 21,
         name: "Limited Pro",
         price: 109.99,
         description: "Limited edition professional model",
@@ -611,8 +604,8 @@ export const products = [
     // Classics
     {
         id: "classic-1",
-        category: "shoes",
-        subcategory: "classics",
+        categoryId: 3,
+        subCategoryId: 22,
         name: "OG Classic",
         price: 64.99,
         description: "Original classic skate shoe design",
@@ -620,8 +613,8 @@ export const products = [
     },
     {
         id: "classic-2",
-        category: "shoes",
-        subcategory: "classics",
+        categoryId: 3,
+        subCategoryId: 22,
         name: "Retro Classic",
         price: 69.99,
         description: "Retro-inspired classic model",
@@ -629,8 +622,8 @@ export const products = [
     },
     {
         id: "classic-3",
-        category: "shoes",
-        subcategory: "classics",
+        categoryId: 3,
+        subCategoryId: 22,
         name: "Vintage Classic",
         price: 74.99,
         description: "Vintage style with modern features",
@@ -638,19 +631,19 @@ export const products = [
     },
     {
         id: "classic-4",
-        category: "shoes",
-        subcategory: "classics",
+        categoryId: 3,
+        subCategoryId: 22,
         name: "Heritage Classic",
         price: 79.99,
         description: "Heritage design with premium materials",
         image: "https://motobros.com/wp-content/uploads/2024/09/no-image.jpeg"
     },
-    // ACCESSORIES CATEGORY
+    // ACCESSORIES categoryId
     // Skate Tools
     {
         id: "tool-1",
-        category: "accessories",
-        subcategory: "skate-tools",
+        categoryId: 4,
+        subCategoryId: 23,
         name: "All-in-One Skate Tool",
         price: 19.99,
         description: "Multi-functional tool for all your skating needs",
@@ -658,8 +651,8 @@ export const products = [
     },
     {
         id: "tool-2",
-        category: "accessories",
-        subcategory: "skate-tools",
+        categoryId: 4,
+        subCategoryId: 23,
         name: "Pro Socket Tool",
         price: 24.99,
         description: "Professional grade socket wrench set",
@@ -667,8 +660,8 @@ export const products = [
     },
     {
         id: "tool-3",
-        category: "accessories",
-        subcategory: "skate-tools",
+        categoryId: 4,
+        subCategoryId: 23,
         name: "Pocket Tool Kit",
         price: 15.99,
         description: "Compact tool for on-the-go adjustments",
@@ -676,8 +669,8 @@ export const products = [
     },
     {
         id: "tool-4",
-        category: "accessories",
-        subcategory: "skate-tools",
+        categoryId: 4,
+        subCategoryId: 23,
         name: "Premium Tool Set",
         price: 29.99,
         description: "Complete set with carrying case",
@@ -687,8 +680,8 @@ export const products = [
     // Bushings
     {
         id: "bushing-1",
-        category: "accessories",
-        subcategory: "bushings",
+        categoryId: 4,
+        subCategoryId: 24,
         name: "Standard Bushings",
         price: 9.99,
         description: "Classic barrel-cone bushing combo",
@@ -696,8 +689,8 @@ export const products = [
     },
     {
         id: "bushing-2",
-        category: "accessories",
-        subcategory: "bushings",
+        categoryId: 4,
+        subCategoryId: 24,
         name: "Pro Hard Bushings",
         price: 14.99,
         description: "Hard durometer for responsive turning",
@@ -705,8 +698,8 @@ export const products = [
     },
     {
         id: "bushing-3",
-        category: "accessories",
-        subcategory: "bushings",
+        categoryId: 4,
+        subCategoryId: 24,
         name: "Soft Carve Bushings",
         price: 12.99,
         description: "Soft bushings for smooth carving",
@@ -714,8 +707,8 @@ export const products = [
     },
     {
         id: "bushing-4",
-        category: "accessories",
-        subcategory: "bushings",
+        categoryId: 4,
+        subCategoryId: 24,
         name: "Premium Combo Pack",
         price: 19.99,
         description: "Mixed durometer pack for customization",
@@ -725,8 +718,8 @@ export const products = [
     // Shock & Riser Pads
     {
         id: "pad-1",
-        category: "accessories",
-        subcategory: "shock-riser-pads",
+        categoryId: 4,
+        subCategoryId: 25,
         name: "Basic Risers",
         price: 6.99,
         description: "Standard 1/8 inch riser pads",
@@ -734,8 +727,8 @@ export const products = [
     },
     {
         id: "pad-2",
-        category: "accessories",
-        subcategory: "shock-riser-pads",
+        categoryId: 4,
+        subCategoryId: 25,
         name: "Shock Pads",
         price: 9.99,
         description: "Vibration absorbing shock pads",
@@ -743,8 +736,8 @@ export const products = [
     },
     {
         id: "pad-3",
-        category: "accessories",
-        subcategory: "shock-riser-pads",
+        categoryId: 4,
+        subCategoryId: 25,
         name: "Wedge Risers",
         price: 11.99,
         description: "Angled risers for turning adjustment",
@@ -752,8 +745,8 @@ export const products = [
     },
     {
         id: "pad-4",
-        category: "accessories",
-        subcategory: "shock-riser-pads",
+        categoryId: 4,
+        subCategoryId: 25,
         name: "Pro Riser Kit",
         price: 14.99,
         description: "Complete set of various riser options",
@@ -763,8 +756,8 @@ export const products = [
     // Skate Rails
     {
         id: "rail-1",
-        category: "accessories",
-        subcategory: "skate-rails",
+        categoryId: 4,
+        subCategoryId: 26,
         name: "Standard Rails",
         price: 19.99,
         description: "Basic skateboard rails for grinding",
@@ -772,8 +765,8 @@ export const products = [
     },
     {
         id: "rail-2",
-        category: "accessories",
-        subcategory: "skate-rails",
+        categoryId: 4,
+        subCategoryId: 26,
         name: "Pro Rails",
         price: 24.99,
         description: "Professional grade rails with hardware",
@@ -781,8 +774,8 @@ export const products = [
     },
     {
         id: "rail-3",
-        category: "accessories",
-        subcategory: "skate-rails",
+        categoryId: 4,
+        subCategoryId: 26,
         name: "Mini Rails",
         price: 16.99,
         description: "Compact rails for technical tricks",
@@ -790,8 +783,8 @@ export const products = [
     },
     {
         id: "rail-4",
-        category: "accessories",
-        subcategory: "skate-rails",
+        categoryId: 4,
+        subCategoryId: 26,
         name: "Wide Rails",
         price: 22.99,
         description: "Extra wide rails for stable grinding",
@@ -801,8 +794,8 @@ export const products = [
     // Wax
     {
         id: "wax-1",
-        category: "accessories",
-        subcategory: "wax",
+        categoryId: 4,
+        subCategoryId: 27,
         name: "Standard Skate Wax",
         price: 7.99,
         description: "Basic wax for all surfaces",
@@ -810,8 +803,8 @@ export const products = [
     },
     {
         id: "wax-2",
-        category: "accessories",
-        subcategory: "wax",
+        categoryId: 4,
+        subCategoryId: 27,
         name: "Pro Formula Wax",
         price: 11.99,
         description: "Professional grade wax blend",
@@ -819,8 +812,8 @@ export const products = [
     },
     {
         id: "wax-3",
-        category: "accessories",
-        subcategory: "wax",
+        categoryId: 4,
+        subCategoryId: 27,
         name: "Cold Weather Wax",
         price: 9.99,
         description: "Specially formulated for cold conditions",
@@ -828,8 +821,8 @@ export const products = [
     },
     {
         id: "wax-4",
-        category: "accessories",
-        subcategory: "wax",
+        categoryId: 4,
+        subCategoryId: 27,
         name: "Bulk Wax Pack",
         price: 19.99,
         description: "Value pack with multiple blocks",
@@ -839,8 +832,8 @@ export const products = [
     // Socks
     {
         id: "sock-1",
-        category: "accessories",
-        subcategory: "socks",
+        categoryId: 4,
+        subCategoryId: 28,
         name: "Classic Crew Socks",
         price: 12.99,
         description: "Standard crew length skate socks",
@@ -848,8 +841,8 @@ export const products = [
     },
     {
         id: "sock-2",
-        category: "accessories",
-        subcategory: "socks",
+        categoryId: 4,
+        subCategoryId: 28,
         name: "Pro Performance Socks",
         price: 16.99,
         description: "Technical socks with extra cushioning",
@@ -857,8 +850,8 @@ export const products = [
     },
     {
         id: "sock-3",
-        category: "accessories",
-        subcategory: "socks",
+        categoryId: 4,
+        subCategoryId: 28,
         name: "No-Show Socks",
         price: 11.99,
         description: "Low-cut socks for minimal look",
@@ -866,8 +859,8 @@ export const products = [
     },
     {
         id: "sock-4",
-        category: "accessories",
-        subcategory: "socks",
+        categoryId: 4,
+        subCategoryId: 28,
         name: "Winter Skate Socks",
         price: 14.99,
         description: "Thick socks for cold weather skating",
@@ -877,8 +870,8 @@ export const products = [
     // Backpacks
     {
         id: "backpack-1",
-        category: "accessories",
-        subcategory: "backpacks",
+        categoryId: 4,
+        subCategoryId: 29,
         name: "Classic Skate Pack",
         price: 39.99,
         description: "Standard backpack with board straps",
@@ -886,8 +879,8 @@ export const products = [
     },
     {
         id: "backpack-2",
-        category: "accessories",
-        subcategory: "backpacks",
+        categoryId: 4,
+        subCategoryId: 29,
         name: "Pro Tour Backpack",
         price: 59.99,
         description: "Large capacity pack with laptop sleeve",
@@ -895,8 +888,8 @@ export const products = [
     },
     {
         id: "backpack-3",
-        category: "accessories",
-        subcategory: "backpacks",
+        categoryId: 4,
+        subCategoryId: 29,
         name: "Mini Skate Pack",
         price: 34.99,
         description: "Compact pack for essentials",
@@ -904,8 +897,8 @@ export const products = [
     },
     {
         id: "backpack-4",
-        category: "accessories",
-        subcategory: "backpacks",
+        categoryId: 4,
+        subCategoryId: 29,
         name: "Deluxe Travel Pack",
         price: 69.99,
         description: "Premium pack with multiple board straps",

@@ -11,11 +11,13 @@ import {
 import { ShoppingCart } from "lucide-react";
 import CardItem from "./card-item";
 import { useProductStore } from "../../../store/add-products";
+import { StoredProductProps } from "@/components/helpers/interfaces/storedProducts";
 
 export function Sidebar() {
-  const { products } = useProductStore();
-  const cartItems = products.filter((product) => (product.quantity || 0) > 0);
-  const cartCount = cartItems.reduce((total, item) => total + (item.quantity || 0), 0);
+  const { storedProducts } = useProductStore();
+  console.log("\n\n\n\n\n\n---", storedProducts, "-\n\n\n\n\n\n\n");
+  const cartItems = storedProducts.filter((storedProduct : StoredProductProps) => (storedProduct?.quantity || 0) > 0);
+  const cartCount = cartItems.reduce((total, item) => total + (item?.quantity || 0), 0);
 
   return (
     <Sheet>
@@ -38,7 +40,7 @@ export function Sidebar() {
           {cartItems.length > 0 ? (
             <div className="flex flex-col items-center justify-center gap-4 py-4">
               {cartItems.map((item) => (
-                <CardItem key={item.id} {...item} />
+                <CardItem key={item.product.id} {...item} />
               ))}
             </div>
           ) : (

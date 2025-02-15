@@ -164,7 +164,7 @@ export const navbar = [
       {
         id: 3,
         title: "Bushings",
-        href: "/docs/accessories/bushings",
+        href: "/docs/accessories/skate-tools",
         description: "Upgrade your ride with our rad selection of bushings.",
       },
       {

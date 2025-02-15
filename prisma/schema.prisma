@@ -21,10 +21,39 @@ model User {
 
 model Product {
     id Int @id @default(autoincrement())
+    name         String
+    image        String   
+    price        Decimal
+    description  String
+
+    categoryId   Int
+    category     Category @relation(fields: [categoryId], references: [id], name: "CategoryToProduct")
+
+    subCategoryId Int
+    subCategory   SubCategory @relation("SubCategoryToProduct", fields: [subCategoryId], references: [id])
+
+}
+
+model Category {
+    id Int @id @default(autoincrement())
 
     name     String
-    imageUrl String
+    description String @default("None")
+    href    String
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    subcategories   SubCategory[]
+    products  Product[] @relation("CategoryToProduct")
+}
+
+model SubCategory {
+    id Int @id @default(autoincrement())
+
+    name     String
+    description String @default("None")
+    href String
+
+    categoryId  Int
+    category    Category @relation(fields: [categoryId], references: [id])
+
+    products    Product[]     @relation("SubCategoryToProduct") 
 }

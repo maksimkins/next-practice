@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../prisma/prisma-client";
 import { formRegisterSchema } from "@/app/(without-nav)/auth/schema";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs"
 
 export async function GET() {
     const users = await prisma.user.findMany()

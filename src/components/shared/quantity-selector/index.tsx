@@ -1,24 +1,25 @@
 "use client";
 
-import { ItemProps } from "@/components/helpers/interfaces/items";
+import { ProductProps } from "@/components/helpers/interfaces/product";
+import { StoredProductProps } from "@/components/helpers/interfaces/storedProducts";
 import { Button } from "@/components/ui/button";
 import { useProductStore } from "@/store";
 import { MinusIcon, PlusIcon } from "lucide-react";
 
 interface QuantitySelectorProps {
-  product: ItemProps;
+  storedProduct: StoredProductProps;
 }
 
-export default function QuantitySelector({ product }: QuantitySelectorProps) {
-  const { products, setProducts } = useProductStore();
+export default function QuantitySelector({ storedProduct }: QuantitySelectorProps) {
+  const { storedProducts, setProducts } = useProductStore();
 
-  const current = products.find((p) => p.id === product.id);
+  const current = storedProducts.find((p) => p?.product.id === storedProduct?.product.id);
   const count = current ? current.quantity : 1;
 
   const increment = () => {
     setProducts((prev) =>
       prev.map((p) =>
-        p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+        p?.product.id === storedProduct?.product.id ? { ...p, quantity: (p?.quantity ? 0 : p.quantity) + 1 } : p
       )
     );
   };
@@ -27,7 +28,7 @@ export default function QuantitySelector({ product }: QuantitySelectorProps) {
     if (count > 1) {
       setProducts((prev) =>
         prev.map((p) =>
-          p.id === product.id ? { ...p, quantity: p.quantity - 1 } : p
+          p.product.id === storedProduct.product.id ? { ...p, quantity:  p?.quantity ? 0 : p.quantity - 1 } : p
         )
       );
     }

@@ -1,12 +1,13 @@
-import { ItemProps } from '@/components/helpers/interfaces/items';
+import { ProductProps } from '@/components/helpers/interfaces/product';
+import { StoredProductProps } from '@/components/helpers/interfaces/storedProducts';
 import { create } from 'zustand';
 
 export const useProductStore = create<{
-    products: ItemProps[];
-    setProducts: (update: (prev: ItemProps[]) => ItemProps[]) => void
+    storedProducts: StoredProductProps[];
+    setProducts: (update: (prev: StoredProductProps[]) => StoredProductProps[]) => void
 }>(set => (
     {
-        products: [],
-        setProducts: update => set(state => ({ products: update(state.products) }))
+        storedProducts: [],
+        setProducts: update => set(state => ({ storedProducts: update(state.storedProducts) }))
     }
 ))

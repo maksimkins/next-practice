@@ -67,7 +67,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Social Icons */}
         <div className="flex space-x-4">
           <Button variant="ghost" className="bg-gray-800 border border-gray-600">
             <Github className="h-5 w-5 text-white" />

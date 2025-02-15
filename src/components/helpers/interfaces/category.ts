@@ -1,6 +1,19 @@
+import { ProductProps } from "./product"
+
 export interface CategoryProps {
-    id: string
-    title: string
+    id: number
+    name: string
+    href?: string
+    description: string
+    subCategories: SubCategoryProps[]
+}
+
+
+export interface SubCategoryProps {
+    id: number
+    name: string
     href: string
     description: string
+    categoryId: number;
+    products?: ProductProps[]
 }

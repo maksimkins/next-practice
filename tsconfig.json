@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/components/helpers/scripts/addSubCategory.js"  ],
   "exclude": [
     "node_modules"
   ]

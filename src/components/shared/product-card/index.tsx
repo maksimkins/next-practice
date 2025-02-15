@@ -1,6 +1,6 @@
 "use client";
-import { CategoryProps } from "@/components/helpers/interfaces/category";
-import { ItemProps } from "@/components/helpers/interfaces/items";
+import { ProductProps } from "@/components/helpers/interfaces/product";
+import { StoredProductProps } from "@/components/helpers/interfaces/storedProducts";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,28 +14,31 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 type ProductCardProps = {
-  product: ItemProps | CategoryProps;
+  storedProduct: StoredProductProps;
 };
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ storedProduct }: ProductCardProps) {
   const pathname = usePathname();
-  const isCategoriesPage = /^\/docs\/[^/]+$/.test(pathname);
+
+  console.log("\n\n\n\n", storedProduct, "\n\n\n\n")
 
   const { setProducts } = useProductStore();
 
   const addProducts = (
     event: React.MouseEvent<HTMLButtonElement>,
-    product: ItemProps
+    storedProduct: StoredProductProps
   ) => {
     event.preventDefault();
     setProducts((prev) => {
-      const current = prev.find((p) => p.id === product.id);
+      const current = prev.find((p) => p.product.id === storedProduct.product.id);
       if (!current) {
-        return [...prev, product];
+        return [...prev, storedProduct];
       }
       return prev;
     });
   };
+
+  //console.log(`\n\n\n\n\n${product.image}\n\n\n\n\n\n\n`)
 
   return (
     <Card className="rounded-lg border bg-zinc-900">
@@ -43,11 +46,11 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="aspect-[4/3] relative overflow-hidden rounded-t-lg">
           <Image
             src={
-              "imageUrl" in product
-                ? product.imageUrl
+              storedProduct.product.image !== null
+                ? storedProduct.product.image
                 : "https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?20210521171500"
             }
-            alt={"name" in product ? product.name : product.title}
+            alt={storedProduct.product.name}
             fill
             className="object-cover"
           />
@@ -55,29 +58,23 @@ export function ProductCard({ product }: ProductCardProps) {
       </CardHeader>
       <CardContent className="p-4">
         <h3 className="font-medium text-lg">
-          {!isCategoriesPage && "name" in product
-            ? `${product.name.charAt(0).toUpperCase()}${product.name
-                .slice(1)
-                .toLowerCase()}`
-            : "title" in product
-            ? product.title
-            : ""}
+          {storedProduct.product.name}
         </h3>
-        {!isCategoriesPage && "price" in product && (
-          <p className="text-sm text-zinc-400">${product.price}</p>
+        {(
+          <p className="text-sm text-zinc-400">${storedProduct.product.price}</p>
         )}
-        {isCategoriesPage && "description" in product && (
-          <p className="text-sm text-zinc-400">{product.description}</p>
+        {(
+          <p className="text-sm text-zinc-400">{storedProduct.product.description}</p>
         )}
       </CardContent>
       <CardFooter className="flex gap-2">
         <Button
           className="flex-1 hover:bg-zinc-900 hover:text-white hover:border hover:border-white transition-all duration-200"
-          onClick={(event) => addProducts(event, product as ItemProps)}
+          onClick={(event) => addProducts(event, {product: storedProduct.product, quantity: 0} as StoredProductProps)}
         >
-          {isCategoriesPage ? "View products" : "Add to card"}
+          {"Add to card"}
         </Button>
-        {!isCategoriesPage && (
+        {(
           <Button size={"icon"} variant={"outline"}>
             <Eye />
           </Button>

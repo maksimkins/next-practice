@@ -137,7 +137,7 @@ export default function SignIn() {
                     </Link>
                   </div>
                   <Link
-                    href="/auth/reset-password"
+                    href={"/auth/reset-password"}
                     className="text-sm font-semibold"
                   >
                     Reset Password

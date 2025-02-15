@@ -23,7 +23,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export async function NavBar() {
   const session = await getServerSession(authOptions);
-  console.log(session)
+  //console.log(session)
 
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/navbar`);
 
@@ -49,7 +49,7 @@ export async function NavBar() {
                       <NavigationMenuLink asChild>
                         <Link
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href="/"
+                          href={"/"}
                         >
                           <div className="mb-2 mt-4 text-lg font-medium">
                             Skateshop

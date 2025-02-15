@@ -14,21 +14,21 @@ import Link from "next/link";
 import { HiOutlineCube } from "react-icons/hi";
 import { GoArrowRight } from "react-icons/go";
 import { ProductCard } from "@/components/shared/product-card";
-import { ItemProps } from "@/components/helpers/interfaces/items";
 import { NavBarProps } from "@/components/helpers/interfaces/navbar";
+import { ProductProps } from "@/components/helpers/interfaces/product";
+
 
 export default async function Main() {
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/navbar`);
   const navbar: NavBarProps[] = await res.json();
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/items`);
-  const items = await response.json();
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/products`);
+  const products = await response.json();
 
   return (
     <main className="container">
       <section className="container py-24 text-center animate-fadeUp">
-        
 
         <h1 className="mb-6 text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl ">
           Foundation for your commerce platform
@@ -54,20 +54,20 @@ export default async function Main() {
 
       <section className="container mx-auto px-4 pb-24 max-w-6xl animate-fadeUp duration-700">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {navbar.map((product) => (
-            <Link key={product.name} href={`${product.items[0].href}`}>
+          {navbar.map((category) => (
+            <Link key={category.name} href={`${category.subcategories[0].href}`}>
               <Card className="border-zinc-800 max-h-[186px] h-full transition-all duration-200 hover:bg-zinc-900">
                 <CardHeader className="h-full flex flex-col justify-between">
                   <div className="flex flex-col py-3 gap-2">
-                    <CardTitle>{product.name}</CardTitle>
+                    <CardTitle>{category.name}</CardTitle>
                     <CardDescription className="text-zinc-400">
-                      {product.description}
+                      {category.description}
                     </CardDescription>
                   </div>
                   <div className="mt-4 flex items-center text-sm text-zinc-400 gap-1 ">
                     <HiOutlineCube />
                     <span className="mt-[-2px]">
-                      {product.items.length} products
+                      {category.subcategories.length} products
                     </span>
                   </div>
                 </CardHeader>
@@ -94,10 +94,10 @@ export default async function Main() {
           </div>
         </div>
         <div className="grid gap-6 mt-8 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map((product: ItemProps) => (
-            <Link key={product.id} href={`${product.href}`}>
-              <ProductCard product={product} />
-            </Link>
+          {products.map((product: ProductProps) => (
+          <Link key={`${product.id}`} href={`products/${product.id}`}>
+            <ProductCard storedProduct={{product: product, quantity: 0}} />
+          </Link>
           ))}
         </div>
       </section>
