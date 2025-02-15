@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default async function CategoryPage({ params }: Props) {
-  const { category } = params;
+  const { category } = await params;
 
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_HOST}/docs/${category}`

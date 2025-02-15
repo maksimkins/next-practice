@@ -1,4 +1,4 @@
 export interface SearchItemProps {
-    title: string
+    name: string
     href: string
 }

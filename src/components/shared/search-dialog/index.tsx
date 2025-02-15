@@ -57,7 +57,7 @@ export function SearchDialog() {
   }, [searchQuery]);
 
   const handleResultSelect = (result: SearchItemProps) => {
-    router.push(result.href);
+    router.push(result.href.includes("/all") ? result.href.replace(/\/all$/, "") : result.href);
     setOpen(false);
   };
 

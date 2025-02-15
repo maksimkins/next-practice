@@ -15,7 +15,7 @@ import { StoredProductProps } from "@/components/helpers/interfaces/storedProduc
 
 export function Sidebar() {
   const { storedProducts } = useProductStore();
-  console.log("\n\n\n\n\n\n---", storedProducts, "-\n\n\n\n\n\n\n");
+  //console.log("\n\n\n\n\n\n---", storedProducts, "-\n\n\n\n\n\n\n");
   const cartItems = storedProducts.filter((storedProduct : StoredProductProps) => (storedProduct?.quantity || 0) > 0);
   const cartCount = cartItems.reduce((total, item) => total + (item?.quantity || 0), 0);
 
